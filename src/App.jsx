@@ -55,14 +55,15 @@ import {
 // ============================================================================
 // CONFIGURAÇÃO DO FIREBASE (COLE SUAS CHAVES REAIS DO PROJETO)
 // ============================================================================
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyDj6aUJogCOjstJXEJkAOdv8-Wv-c3T07c",
+  apiKey: "AIzaSyDj6aUJogCOjstJXEJkAOdV7TlyDHSZ-1g",
   authDomain: "studiosol-gd.firebaseapp.com",
   projectId: "studiosol-gd",
-  storageBucket: "studiosol-gd.appspot.com",
+  storageBucket: "studiosol-gd.firebasestorage.app",
   messagingSenderId: "1089430874805",
-  appId: "1:1089430874805:web:77e86fa1484be4702fbac8",
-  measurementId: "G-9RPF9P9VBN"
+  appId: "1:1089430874805:web:328c87e746a2297d952cfc",
+  measurementId: "G-G5J6BF5P7T"
 };
 
 const appId = 'studio-sol-hakon';
