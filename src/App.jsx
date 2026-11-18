@@ -56,12 +56,13 @@ import {
 // CONFIGURAÇÃO DO FIREBASE (COLE SUAS CHAVES REAIS DO PROJETO)
 // ============================================================================
 const firebaseConfig = {
-  apiKey: "COLE_SUA_API_KEY_AQUI",
-  authDomain: "COLE_SEU_PROJETO.firebaseapp.com",
-  projectId: "COLE_SEU_PROJECT_ID",
-  storageBucket: "COLE_SEU_PROJETO.appspot.com",
-  messagingSenderId: "COLE_SEU_SENDER_ID",
-  appId: "COLE_SEU_APP_ID"
+  apiKey: "AIzaSyDj6aUJogCOjstJXEJkAOdv8-Wv-c3T07c",
+  authDomain: "studiosol-gd.firebaseapp.com",
+  projectId: "studiosol-gd",
+  storageBucket: "studiosol-gd.appspot.com",
+  messagingSenderId: "1089430874805",
+  appId: "1:1089430874805:web:77e86fa1484be4702fbac8",
+  measurementId: "G-9RPF9P9VBN"
 };
 
 const appId = 'studio-sol-hakon';
