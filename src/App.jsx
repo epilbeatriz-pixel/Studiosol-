@@ -1,4 +1,3 @@
-```react
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { initializeApp } from 'firebase/app';
 import {
@@ -58,15 +57,7 @@ import {
 // ============================================================================
 // CONFIGURAÇÃO FIREBASE E VARIÁVEIS DE AMBIENTE
 // ============================================================================
-const firebaseConfig = {
-  apiKey: "AIzaSyDj6aUJogCOjstJXEJkAOdV7TlyDHSZ-1g",
-  authDomain: "studiosol-gd.firebaseapp.com",
-  projectId: "studiosol-gd",
-  storageBucket: "studiosol-gd.firebasestorage.app",
-  messagingSenderId: "1089430874805",
-  appId: "1:1089430874805:web:328c87e746a2297d952cfc",
-  measurementId: "G-G5J6BF5P7T"
-};
+const firebaseConfig = JSON.parse(__firebase_config);
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
@@ -5304,4 +5295,3 @@ function ClientPublicFormView({ formType, db, auth, appId, onRequestProfessional
     </div>
   );
 }
-```
