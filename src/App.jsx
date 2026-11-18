@@ -53,7 +53,7 @@ import {
 } from 'lucide-react';
 
 // ============================================================================
-// CONFIGURAÇÃO DO FIREBASE
+// CONFIGURAÇÃO DO FIREBASE (COLE SUAS CHAVES REAIS AQUI)
 // ============================================================================
 const firebaseConfig = {
   apiKey: "COLE_SUA_API_KEY_AQUI",
@@ -315,9 +315,6 @@ const createEmptyClient = (procedureType = 'laser', source = 'profissional') => 
   photos: []
 });
 
-// ============================================================================
-// COMPONENTE DE ASSINATURA DIGITAL NA TELA
-// ============================================================================
 function SignaturePad({ value, onChange, readOnly = false }) {
   const canvasRef = useRef(null);
   const [isDrawing, setIsDrawing] = useState(false);
@@ -421,15 +418,7 @@ function SignaturePad({ value, onChange, readOnly = false }) {
   );
 }
 
-// ============================================================================
-// FORMULÁRIO COMPLETO DA FICHA
-// ============================================================================
-function AnamnesisFormBody({
-  data,
-  setData,
-  isClientPublicMode = false,
-  readOnly = false
-}) {
+function AnamnesisFormBody({ data, setData, isClientPublicMode = false, readOnly = false }) {
   const isLaser = data.procedureType === 'laser' || data.hasLaserRecord;
   const isDespig = data.procedureType === 'despigmentacao' || data.hasDespigRecord;
 
@@ -492,7 +481,6 @@ function AnamnesisFormBody({
 
   return (
     <div className="space-y-6">
-      {/* 1. DADOS PESSOAIS */}
       <section className="bg-white rounded-2xl p-5 sm:p-6 shadow-sm border border-stone-200/80 space-y-4">
         <div className="flex items-center gap-2.5 border-b border-stone-100 pb-3">
           <span className="w-7 h-7 rounded-full bg-amber-900 text-white text-xs font-bold flex items-center justify-center">
@@ -503,9 +491,7 @@ function AnamnesisFormBody({
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           <div className="sm:col-span-2">
-            <label className="block text-xs font-semibold text-stone-600 mb-1">
-              Nome Completo *
-            </label>
+            <label className="block text-xs font-semibold text-stone-600 mb-1">Nome Completo *</label>
             <input
               type="text"
               required
@@ -518,9 +504,7 @@ function AnamnesisFormBody({
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-stone-600 mb-1">
-              Telefone / WhatsApp *
-            </label>
+            <label className="block text-xs font-semibold text-stone-600 mb-1">Telefone / WhatsApp *</label>
             <input
               type="tel"
               required
@@ -533,9 +517,7 @@ function AnamnesisFormBody({
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-stone-600 mb-1">
-              Data de Nascimento
-            </label>
+            <label className="block text-xs font-semibold text-stone-600 mb-1">Data de Nascimento</label>
             <input
               type="date"
               disabled={readOnly}
@@ -653,9 +635,7 @@ function AnamnesisFormBody({
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-stone-600 mb-1">
-              Como nos conheceu?
-            </label>
+            <label className="block text-xs font-semibold text-stone-600 mb-1">Como nos conheceu?</label>
             <input
               type="text"
               disabled={readOnly}
@@ -668,7 +648,6 @@ function AnamnesisFormBody({
         </div>
       </section>
 
-      {/* 2A. HISTÓRICO ESPECÍFICO: DEPILAÇÃO A LASER HAKON */}
       {isLaser && (
         <section className="bg-white rounded-2xl p-5 sm:p-6 shadow-sm border border-stone-200/80 space-y-4">
           <div className="flex items-center gap-2.5 border-b border-stone-100 pb-3">
@@ -684,9 +663,7 @@ function AnamnesisFormBody({
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-semibold text-stone-600 mb-1">
-                Costuma fazer depilação na área?
-              </label>
+              <label className="block text-xs font-semibold text-stone-600 mb-1">Costuma fazer depilação na área?</label>
               <select
                 disabled={readOnly}
                 value={data.hairHistory.doesHairRemoval}
@@ -699,9 +676,7 @@ function AnamnesisFormBody({
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-stone-600 mb-1">
-                Presença de pelos encravados?
-              </label>
+              <label className="block text-xs font-semibold text-stone-600 mb-1">Presença de pelos encravados?</label>
               <div className="flex gap-2">
                 <select
                   disabled={readOnly}
@@ -725,9 +700,7 @@ function AnamnesisFormBody({
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-stone-600 mb-2">
-              Métodos utilizados anteriormente:
-            </label>
+            <label className="block text-xs font-semibold text-stone-600 mb-2">Métodos utilizados anteriormente:</label>
             <div className="flex flex-wrap gap-2">
               {PREVIOUS_METHODS.map((method) => {
                 const active = data.hairHistory.methods?.includes(method);
@@ -751,9 +724,7 @@ function AnamnesisFormBody({
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-stone-600 mb-2">
-              Reações prévias pós-depilação:
-            </label>
+            <label className="block text-xs font-semibold text-stone-600 mb-2">Reações prévias pós-depilação:</label>
             <div className="flex flex-wrap gap-2">
               {PREVIOUS_REACTIONS.map((reaction) => {
                 const active = data.hairHistory.reactions?.includes(reaction);
@@ -778,9 +749,7 @@ function AnamnesisFormBody({
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div>
-              <label className="block text-xs font-semibold text-stone-600 mb-1">
-                Espessura do Pelo
-              </label>
+              <label className="block text-xs font-semibold text-stone-600 mb-1">Espessura do Pelo</label>
               <select
                 disabled={readOnly}
                 value={data.hairHistory.hairThickness}
@@ -794,9 +763,7 @@ function AnamnesisFormBody({
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-stone-600 mb-1">
-                Cor do Pelo
-              </label>
+              <label className="block text-xs font-semibold text-stone-600 mb-1">Cor do Pelo</label>
               <select
                 disabled={readOnly}
                 value={data.hairHistory.hairColor}
@@ -810,9 +777,7 @@ function AnamnesisFormBody({
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-stone-600 mb-1">
-                Expectativa de Resultado
-              </label>
+              <label className="block text-xs font-semibold text-stone-600 mb-1">Expectativa de Resultado</label>
               <input
                 type="text"
                 disabled={readOnly}
@@ -826,7 +791,6 @@ function AnamnesisFormBody({
         </section>
       )}
 
-      {/* 2B. HISTÓRICO ESPECÍFICO: DESPIGMENTAÇÃO */}
       {isDespig && (
         <section className="bg-white rounded-2xl p-5 sm:p-6 shadow-sm border border-stone-200/80 space-y-4">
           <div className="flex items-center gap-2.5 border-b border-stone-100 pb-3">
@@ -842,29 +806,21 @@ function AnamnesisFormBody({
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             <div>
-              <label className="block text-xs font-semibold text-stone-600 mb-1">
-                Tipo de Procedimento
-              </label>
+              <label className="block text-xs font-semibold text-stone-600 mb-1">Tipo de Procedimento</label>
               <select
                 disabled={readOnly}
                 value={data.despigHistory.targetType}
                 onChange={(e) => updateSection('despigHistory', 'targetType', e.target.value)}
                 className={inputClass}
               >
-                <option value="Sobrancelhas (Micropigmentação)">
-                  Sobrancelhas (Micropigmentação)
-                </option>
+                <option value="Sobrancelhas (Micropigmentação)">Sobrancelhas (Micropigmentação)</option>
                 <option value="Tatuagem Corporal">Tatuagem Corporal</option>
-                <option value="Ambos (Sobrancelhas e Tatuagem)">
-                  Ambos (Sobrancelhas e Tatuagem)
-                </option>
+                <option value="Ambos (Sobrancelhas e Tatuagem)">Ambos (Sobrancelhas e Tatuagem)</option>
               </select>
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-stone-600 mb-1">
-                Localização e Tamanho Aproximado (cm)
-              </label>
+              <label className="block text-xs font-semibold text-stone-600 mb-1">Localização e Tamanho (cm)</label>
               <input
                 type="text"
                 disabled={readOnly}
@@ -876,9 +832,7 @@ function AnamnesisFormBody({
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-stone-600 mb-1">
-                Tempo do Pigmento / Tatuagem
-              </label>
+              <label className="block text-xs font-semibold text-stone-600 mb-1">Tempo do Pigmento / Tatuagem</label>
               <input
                 type="text"
                 disabled={readOnly}
@@ -890,9 +844,7 @@ function AnamnesisFormBody({
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-stone-600 mb-1">
-                Nº de Retoques / Coberturas Anteriores
-              </label>
+              <label className="block text-xs font-semibold text-stone-600 mb-1">Nº de Retoques Anteriores</label>
               <input
                 type="text"
                 disabled={readOnly}
@@ -904,42 +856,32 @@ function AnamnesisFormBody({
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-stone-600 mb-1">
-                Já fez sessões de remoção antes? Quantas?
-              </label>
+              <label className="block text-xs font-semibold text-stone-600 mb-1">Já fez sessões de remoção antes?</label>
               <input
                 type="text"
                 disabled={readOnly}
                 value={data.despigHistory.previousRemovalSessions}
-                onChange={(e) =>
-                  updateSection('despigHistory', 'previousRemovalSessions', e.target.value)
-                }
+                onChange={(e) => updateSection('despigHistory', 'previousRemovalSessions', e.target.value)}
                 placeholder="Ex: Nunca / 2 sessões"
                 className={inputClass}
               />
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-stone-600 mb-1">
-                Qual técnica usou antes (Laser/Ácido)?
-              </label>
+              <label className="block text-xs font-semibold text-stone-600 mb-1">Qual técnica usou antes?</label>
               <input
                 type="text"
                 disabled={readOnly}
                 value={data.despigHistory.previousRemovalMethod}
-                onChange={(e) =>
-                  updateSection('despigHistory', 'previousRemovalMethod', e.target.value)
-                }
-                placeholder="Ex: Nenhuma, Laser Nd:YAG, Química..."
+                onChange={(e) => updateSection('despigHistory', 'previousRemovalMethod', e.target.value)}
+                placeholder="Ex: Laser Nd:YAG, Química..."
                 className={inputClass}
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-stone-600 mb-2">
-              Cores presentes no pigmento / tatuagem:
-            </label>
+            <label className="block text-xs font-semibold text-stone-600 mb-2">Cores presentes no pigmento:</label>
             <div className="flex flex-wrap gap-2">
               {PIGMENT_COLORS.map((color) => {
                 const active = data.despigHistory.pigmentColors?.includes(color);
@@ -964,16 +906,12 @@ function AnamnesisFormBody({
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-semibold text-stone-600 mb-1">
-                Presença de cicatriz, relevo ou fibrose no local?
-              </label>
+              <label className="block text-xs font-semibold text-stone-600 mb-1">Cicatriz, relevo ou fibrose no local?</label>
               <div className="flex gap-2">
                 <select
                   disabled={readOnly}
                   value={data.despigHistory.hasScarOrFibrosis}
-                  onChange={(e) =>
-                    updateSection('despigHistory', 'hasScarOrFibrosis', e.target.value)
-                  }
+                  onChange={(e) => updateSection('despigHistory', 'hasScarOrFibrosis', e.target.value)}
                   className="w-28 px-3 py-2.5 rounded-xl border border-stone-200 bg-white text-sm"
                 >
                   <option value="Não">Não</option>
@@ -991,15 +929,13 @@ function AnamnesisFormBody({
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-stone-600 mb-1">
-                Objetivo / Expectativa da Cliente
-              </label>
+              <label className="block text-xs font-semibold text-stone-600 mb-1">Objetivo / Expectativa</label>
               <input
                 type="text"
                 disabled={readOnly}
                 value={data.despigHistory.expectation}
                 onChange={(e) => updateSection('despigHistory', 'expectation', e.target.value)}
-                placeholder="Ex: Remoção total, clareamento para nova técnica..."
+                placeholder="Ex: Remoção total, clareamento..."
                 className={inputClass}
               />
             </div>
@@ -1007,21 +943,16 @@ function AnamnesisFormBody({
         </section>
       )}
 
-      {/* 3. AVALIAÇÃO CUTÂNEA E FOTOTIPO */}
       <section className="bg-white rounded-2xl p-5 sm:p-6 shadow-sm border border-stone-200/80 space-y-4">
         <div className="flex items-center gap-2.5 border-b border-stone-100 pb-3">
           <span className="w-7 h-7 rounded-full bg-amber-900 text-white text-xs font-bold flex items-center justify-center">
             3
           </span>
-          <h3 className="font-semibold text-stone-800 text-base">
-            Avaliação Cutânea e Fototipo (Fitzpatrick)
-          </h3>
+          <h3 className="font-semibold text-stone-800 text-base">Avaliação Cutânea e Fototipo (Fitzpatrick)</h3>
         </div>
 
         <div>
-          <label className="block text-xs font-semibold text-stone-600 mb-2">
-            Classificação de Fitzpatrick:
-          </label>
+          <label className="block text-xs font-semibold text-stone-600 mb-2">Classificação de Fitzpatrick:</label>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             {FITZPATRICK_OPTIONS.map((opt) => {
               const selected = data.skinEvaluation.fitzpatrickClient === opt.value;
@@ -1046,15 +977,11 @@ function AnamnesisFormBody({
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
           <div>
-            <label className="block text-xs font-semibold text-stone-600 mb-1">
-              Houve exposição solar / bronzeamento nos últimos 15 a 30 dias?
-            </label>
+            <label className="block text-xs font-semibold text-stone-600 mb-1">Exposição solar nos últimos 15 a 30 dias?</label>
             <select
               disabled={readOnly}
               value={data.skinEvaluation.recentSunExposure}
-              onChange={(e) =>
-                updateSection('skinEvaluation', 'recentSunExposure', e.target.value)
-              }
+              onChange={(e) => updateSection('skinEvaluation', 'recentSunExposure', e.target.value)}
               className={inputClass}
             >
               <option value="Não">Não</option>
@@ -1063,16 +990,12 @@ function AnamnesisFormBody({
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-stone-600 mb-1">
-              Há tatuagem, micropigmentação ou hiperpigmentação na área/arredores?
-            </label>
+            <label className="block text-xs font-semibold text-stone-600 mb-1">Tatuagem ou hiperpigmentação na área?</label>
             <div className="flex gap-2">
               <select
                 disabled={readOnly}
                 value={data.skinEvaluation.hasTattooOrHyper}
-                onChange={(e) =>
-                  updateSection('skinEvaluation', 'hasTattooOrHyper', e.target.value)
-                }
+                onChange={(e) => updateSection('skinEvaluation', 'hasTattooOrHyper', e.target.value)}
                 className="w-28 px-3 py-2.5 rounded-xl border border-stone-200 bg-white text-sm"
               >
                 <option value="Não">Não</option>
@@ -1091,15 +1014,12 @@ function AnamnesisFormBody({
         </div>
       </section>
 
-      {/* 4. HISTÓRICO DE SAÚDE E CONTRAINDICAÇÕES */}
       <section className="bg-white rounded-2xl p-5 sm:p-6 shadow-sm border border-stone-200/80 space-y-4">
         <div className="flex items-center gap-2.5 border-b border-stone-100 pb-3">
           <span className="w-7 h-7 rounded-full bg-amber-900 text-white text-xs font-bold flex items-center justify-center">
             4
           </span>
-          <h3 className="font-semibold text-stone-800 text-base">
-            Histórico de Saúde e Contraindicações
-          </h3>
+          <h3 className="font-semibold text-stone-800 text-base">Histórico de Saúde e Contraindicações</h3>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">
@@ -1127,105 +1047,3 @@ function AnamnesisFormBody({
                           : 'bg-amber-800 text-white'
                         : 'bg-white text-stone-400 border border-stone-200'
                     }`}
-                  >
-                    {checked ? 'SIM' : 'NÃO'}
-                  </span>
-                </div>
-
-                {checked && item.hasDetail && (
-                  <input
-                    type="text"
-                    disabled={readOnly}
-                    onClick={(e) => e.stopPropagation()}
-                    value={
-                      item.id === 'cirurgia'
-                        ? data.healthHistory.cirurgiaDetail
-                        : data.healthHistory.acidosDetail
-                    }
-                    onChange={(e) =>
-                      updateSection(
-                        'healthHistory',
-                        item.id === 'cirurgia' ? 'cirurgiaDetail' : 'acidosDetail',
-                        e.target.value
-                      )
-                    }
-                    placeholder={item.detailPlaceholder}
-                    className="w-full px-3 py-1.5 rounded-lg border border-amber-300 bg-white text-xs text-stone-800"
-                  />
-                )}
-              </div>
-            );
-          })}
-        </div>
-      </section>
-
-      {/* 5. MEDICAMENTOS E FOTOSSENSIBILIZANTES */}
-      <section className="bg-white rounded-2xl p-5 sm:p-6 shadow-sm border border-stone-200/80 space-y-4">
-        <div className="flex items-center gap-2.5 border-b border-stone-100 pb-3">
-          <span className="w-7 h-7 rounded-full bg-amber-900 text-white text-xs font-bold flex items-center justify-center">
-            5
-          </span>
-          <h3 className="font-semibold text-stone-800 text-base">
-            Verificação de Medicamentos e Fotossensibilizantes
-          </h3>
-        </div>
-
-        <div className="space-y-4">
-          {MEDICATION_GROUPS.map((grp) => (
-            <div key={grp.group} className="space-y-2">
-              <p className="text-xs font-bold uppercase tracking-wider text-amber-900">
-                {grp.group}
-              </p>
-              <div className="grid grid-cols-1 gap-2">
-                {grp.items.map((med) => {
-                  const checked = !!data.medications.checked?.[med.id];
-                  return (
-                    <div
-                      key={med.id}
-                      onClick={() => toggleMedication(med.id)}
-                      className={`p-3 rounded-xl border cursor-pointer transition flex items-center justify-between gap-3 ${
-                        checked
-                          ? med.critical
-                            ? 'bg-red-50 border-red-300 text-red-900'
-                            : 'bg-amber-50 border-amber-300 text-amber-950'
-                          : 'bg-stone-50/70 border-stone-200 text-stone-700 hover:bg-stone-100'
-                      }`}
-                    >
-                      <span className="text-xs font-medium">{med.label}</span>
-                      <span
-                        className={`px-2 py-0.5 rounded text-[11px] font-bold shrink-0 ${
-                          checked
-                            ? med.critical
-                              ? 'bg-red-600 text-white'
-                              : 'bg-amber-800 text-white'
-                            : 'bg-white text-stone-400 border border-stone-200'
-                        }`}
-                      >
-                        {checked ? 'EM USO' : 'NÃO'}
-                      </span>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div>
-          <label className="block text-xs font-semibold text-stone-600 mb-1">
-            Outros medicamentos relatados pela cliente:
-          </label>
-          <input
-            type="text"
-            disabled={readOnly}
-            value={data.medications.otherMeds}
-            onChange={(e) => updateSection('medications', 'otherMeds', e.target.value)}
-            placeholder="Descreva outros medicamentos ou suplementos..."
-            className={inputClass}
-          />
-        </div>
-      </section>
-
-      {/* 6. TERMO DE RESPONSABILIDADE E ASSINATURA */}
-      <section className="bg-white rounded-2xl p-5 sm:p-6 shadow-sm border border-stone-200/80 space-y-4">
-        <div className="flex items
